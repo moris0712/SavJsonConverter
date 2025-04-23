@@ -1,45 +1,46 @@
 # SavJsonConverter Plugin Documentation
 
-## How to Use
+## 🔧 How to Use
 
-You can find the **SavJsonConverter** menu in the editor tab:
+You can find the **SavJsonConverter** menu in the editor toolbar:
 
-![Image](https://github.com/user-attachments/assets/23cc44fa-d5ea-40d8-b4d5-ed8a1294adee)
+![Menu Location](https://github.com/user-attachments/assets/23cc44fa-d5ea-40d8-b4d5-ed8a1294adee)  
+![Plugin Window](https://github.com/user-attachments/assets/599c6ac0-d2f9-40b6-b64f-81537f12bdb2)
 
-![Image](https://github.com/user-attachments/assets/509b25fe-2a0f-40e4-9b70-45fd25f12591)
+This plugin provides the following core features:
 
-This plugin provides the following features:
-- Load `.sav` files and convert/save them to `.json`
-- Load `.json` files and convert/save them to `.sav`
-- Serialize test data
+- Load `.sav` files and convert them to `.json`
+- Load `.json` files and convert them to `.sav`  
+  ⚠️ *The save class you're trying to convert must be declared within your module*
+- Serialize and test custom save data
 
+![Conversion Preview](https://github.com/user-attachments/assets/15e265e9-8b1a-430d-8987-a98b216137b4)
 
-![Image](https://github.com/user-attachments/assets/f63527d8-8935-4ef1-9e03-37e202a30e41)
-
-If any unexpected or invalid data is detected in the .sav file, you can check the log for detailed warnings.
-
----
-
-### 🧩 Custom Serialization
-
-#### For `UObject`-derived instances
-
-If you want to serialize your custom `UObject`-derived classes, override the `Serialize` function  
-and manually bind each member variable to the archive like this:
-
-![Image](https://github.com/user-attachments/assets/82c86ec3-8985-4893-8f9f-a7eddd261ab3)
+If the plugin detects invalid or unexpected data during `.sav` file parsing, it will display detailed warnings in the log.
 
 ---
 
-#### For `struct` types
+## 🧩 Custom Serialization Support
 
-If you're working with `struct` instances, you need to overload the `operator<<`  
-and serialize the desired member variables the same way:
+### For `UObject`-derived classes
 
-![Image](https://github.com/user-attachments/assets/ebd1f170-3678-4e6c-809f-1ce1dfd0ad2b)
+To serialize your own `UObject`-based save classes, override the `Serialize` function and manually serialize each member variable using the archive:
+
+
+![UObject Serialize Example](https://github.com/user-attachments/assets/82c86ec3-8985-4893-8f9f-a7eddd261ab3)
+
 ---
 
-### ⚠️ Notes
+### For `struct` types
 
-- If the loaded file has been modified externally, **reload it before converting.**
-- The `SaveGameClass` you're trying to convert must be **included in your project.**
+For structs, overload the `operator<<` and serialize only the desired fields:
+
+
+![Struct Serialization Example](https://github.com/user-attachments/assets/ebd1f170-3678-4e6c-809f-1ce1dfd0ad2b)
+
+---
+
+## ⚠️ Important Notes
+
+- If you've modified the `.sav` file externally (e.g., via another tool), make sure to **reload** it before attempting conversion.
+- The `SaveGameClass` specified in the `.json` must be **included and declared within your project module**.
