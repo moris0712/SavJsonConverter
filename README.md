@@ -44,3 +44,4 @@ For structs, overload the `operator<<` and serialize only the desired fields:
 
 - If you've modified the `.sav` file externally (e.g., via another tool), make sure to **reload** it before attempting conversion.
 - The `SaveGameClass` specified in the `.json` must be **included and declared within your project module**.
+- If you want to see a test example, refer to the TestSaveData file in the Test folder.
