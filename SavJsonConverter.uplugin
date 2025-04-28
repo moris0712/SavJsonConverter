@@ -1,0 +1,39 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "SavJsonConverter",
+	"Description": "Convert Between Sav and JSON",
+	"Category": "Editor",
+	"CreatedBy": "Moris",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"FabURL": "com.epicgames.launcher://ue/Fab/product//32ed47a0-1133-4d60-abcc-31d4d4531181",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"EngineVersion": "5.5.0",
+	"CanContainContent": true,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "ConvertTools",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"PlatformAllowList": [
+				"Win64",
+				"Mac",
+				"Android",
+				"IOS"
+			]
+		},
+		{
+			"Name": "ConvertToolsEditor",
+			"Type": "Editor",
+			"LoadingPhase": "PostEngineInit",
+			"PlatformAllowList": [
+				"Win64",
+				"Mac"
+			]
+		}
+	]
+}
